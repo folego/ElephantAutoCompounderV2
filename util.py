@@ -1,9 +1,11 @@
 import datetime
 import math
 
-def log(text):
+def log(text, sameline=True):
     now = datetime.datetime.now()
-    print (now.strftime("%Y%m%d %H:%M:%S") + '> ' + text)
+    if sameline: linecontrol = '\r'
+    else: linecontrol = '\n'
+    print(now.strftime("%Y%m%d %H:%M:%S") + '> ' + text, end=linecontrol)
 
 
 intervals = (

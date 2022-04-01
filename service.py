@@ -25,12 +25,10 @@ def get_user_deposits():
     return elephant_contract.functions.userInfo(wallet_public_addr).call()
 
 def roll():
-    # txn = elephant_contract.functions.roll().buildTransaction(contract.get_tx_options(wallet_public_addr, 500000))
-    # return contract.send_txn(txn, wallet_private_key)
-    return True
+    txn = elephant_contract.functions.roll().buildTransaction(contract.get_tx_options(wallet_public_addr))
+    return contract.send_txn(txn, wallet_private_key)
 
 def withdraw():
-    # txn = elephant_contract.functions.claim().buildTransaction(contract.get_tx_options(wallet_public_addr, 500000))
-    # return contract.send_txn(txn, wallet_private_key)
-    return False
+    txn = elephant_contract.functions.claim().buildTransaction(contract.get_tx_options(wallet_public_addr))
+    return contract.send_txn(txn, wallet_private_key)
 

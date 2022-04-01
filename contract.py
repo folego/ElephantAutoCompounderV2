@@ -32,6 +32,6 @@ def get_tx_options(public_address, gas=500000):
     return {
         "nonce": web3.eth.getTransactionCount(public_address),
         "from": public_address,
-        "gas": gas,
-        "gasPrice": web3.toWei(int(os.environ['GAS_FEE']), "gwei")
+        "gas": int(os.environ['GAS_FEE']),
+        "gasPrice": web3.toWei(5, "gwei"),
     }

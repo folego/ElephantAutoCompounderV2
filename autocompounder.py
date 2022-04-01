@@ -12,10 +12,7 @@
 # 7 - Roll 21 days, claim 7 days (Roll for 21 days, wait 7 days and then claim)
 # 8 - Roll 4 days, Claim 3 (Roll for 4 days, wait 3 days and then claim)
 ######
-###### Features and notes:
-###### Create a config file with these strategies, the app should read and apply based on the strategy selected by the user. -->     fernet_key = os.environ['FERNET_KEY']
-###### Stablish an hour to roll or claim everyday.
-###### All the actions are performed once in a day.
+###### Future Features and notes:
 ###### Send an alert via Telegram or store in a variable?! to track all the rewards claimed.
 ###### Show info every x minutes (configurable) - How much money you are making per day, max payout 205%, etc.
 ###### Alert about gas fee. Check how much the user has in the wallet and estimate how much will last.
@@ -23,7 +20,7 @@
 ###### Ref Telegram: https://www.geeksforgeeks.org/create-a-telegram-bot-using-python/
 
 import time
-from tkinter import W
+# from tkinter import W
 import config as cfg
 import util as u
 import business
@@ -56,13 +53,14 @@ interval = cfg.read_config_interval_info()
 print(f'* Interval in minutes to show the stats: {round(interval / 60)} mins')
 print(f'')
 print(f'')
-u.log('Starting...')
-u.log('Total deposits: ' + str(business.get_user_deposits()) + ' TRUNKs')
+u.log('Starting...', False)
+u.log('Total deposits: ' + str(business.get_user_deposits()) + ' TRUNKs', False)
 
 while True:
     while True:
         try:
-            u.log('Current rewards: ' + str(business.get_user_rewards()) + ' TRUNKs')
+            # print('Current rewards: ' + str(business.get_user_rewards()) + ' TRUNKs', end='\r')
+            u.log('Current rewards: ' + str(business.get_user_rewards()) + ' TRUNKs                                               ')
             business.execute_action_configurated()
             time.sleep(interval-295)
         except Exception as e:
@@ -76,37 +74,7 @@ while True:
 
 
 
-# First Step - Strategy 1 - Alternate Roll/Claim daily (Roll one day and the next day Claim)
-
-
-
-# First Step - Strategy 1 - Alternate Roll/Claim daily (Roll one day and the next day Claim)
-# Check if today is the day to claim or roll
-# Check if the user has enough to roll (>2 Trunks)
-# Record the last action and date (Rolled or Claimed)
-
-# START WITH YOUR SELECTED STRATEGY, NOT THE NUMBER 1
-
-# PROVIDE INFO ABOUT THE STRATEGY: HOW MUCH YOU WILL WITHDRAW THIS MONTH, AFTER 5 YEARS, DAILY, BLA BLA BLA GET THIS INFO IN THE EXCEL FILE
-
-# CREATE A CUSTOM MODE: ONE FOR WEEK (SELECT THE DAY TO CLAIM, ROLL OR DON'T DO ANYTHING)
-# CREATE ANOTHER BASED ON THE DAY OF THE MONTY
-# 1 - N (N = nothing, R = Roll, C = Claim)
-# 2 - N
-# 3 - C
-
-# CLAIM FOREVER
-# WITHDRAW EVERYDAY
-
-#calculate the next withdraw and show tot he user
-#you next withdraw will be in 3 days and will be 4.5 Trunks
-
-# how about automatically stake the withdraws ?
-
-
-
-
-
+# V1
 # General options
 # minimum_to_roll = 2e18 # delete, not relevant anymore
 # time_between_check = 60 # read from config file

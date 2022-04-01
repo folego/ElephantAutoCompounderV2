@@ -9,16 +9,16 @@ def execute_action_configurated():
     if not check_action_already_performed_today():
         #print("check_action_already_performed_today", check_action_already_performed_today())
         rewards = get_user_rewards()
-        if cfg.read_config_strategy() == 1: #strategy = 1 - IMPROVE, considering days even and odds
+        if cfg.read_config_strategy() == 1: #strategy = 1 - TO DO: IMPROVE, for now considering days even and odds
             # print("strategy = 1")
             if not check_for_low_rewards():
                 #print("check_for_low_rewards", check_for_low_rewards())
                 if (u.get_current_day() % 2) == 0: #even
                     service.roll()
-                    print(f"Your balance of {rewards} was rolled. Total balance in Stampede is {1}")
+                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_rewards()), False)
                 else:
                     service.withdraw()
-                    print(f"A transfer of {rewards} was made to your wallet {service.wallet_public_addr}")
+                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_rewards()), False)
                 update_action_performed()
         if cfg.read_config_strategy() == 2:
             if not check_for_low_rewards():
@@ -26,10 +26,10 @@ def execute_action_configurated():
                 strategyAction = strategy.strategy2[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
-                    print(f"Your balance of {rewards} was rolled. New total balance is {1}")
+                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_rewards()), False)
                 if strategyAction == "W":
                     service.withdraw()
-                    print(f"A transfer of {rewards} was made to your wallet {service.wallet_public_addr}")
+                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_rewards()), False)
                 update_action_performed()
         if cfg.read_config_strategy() == 5:
             print("Not implemented yet")
@@ -41,10 +41,10 @@ def execute_action_configurated():
                 strategyAction = strategy.strategy7[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
-                    print(f"Your balance of {rewards} was rolled. Total balance in Stampede is {1}")
+                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_rewards()), False)
                 if strategyAction == "W":
                     service.withdraw()
-                    print(f"A transfer of {rewards} was made to your wallet {service.wallet_public_addr}")
+                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_rewards()), False)
                 update_action_performed()
         if cfg.read_config_strategy() == 8:
             if not check_for_low_rewards():
@@ -52,10 +52,10 @@ def execute_action_configurated():
                 strategyAction = strategy.strategy8[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
-                    print(f"Your balance of {rewards} was rolled. Total balance in Stampede is {1}")
+                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_rewards()), False)
                 if strategyAction == "W":
                     service.withdraw()
-                    print(f"A transfer of {rewards} was made to your wallet {service.wallet_public_addr}")
+                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_rewards()), False)
                 update_action_performed()
 
 def update_action_performed():
