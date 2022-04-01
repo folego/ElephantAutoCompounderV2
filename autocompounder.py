@@ -23,13 +23,9 @@
 ###### Ref Telegram: https://www.geeksforgeeks.org/create-a-telegram-bot-using-python/
 
 import time
-# from datetime import datetime
-# from datetime import timedelta
-import math
 from tkinter import W
 import config as cfg
 import util as u
-import service
 import business
 
 # Start Screen
@@ -60,16 +56,23 @@ interval = cfg.read_config_interval_info()
 print(f'* Interval in minutes to show the stats: {round(interval / 60)} mins')
 print(f'')
 print(f'')
-print(f'')
 u.log('Starting...')
+u.log('Total deposits: ' + str(business.get_user_deposits()) + ' TRUNKs')
 
-# Strategy 0 - Roll Forever
-business.execute_action_configurated()
-    #get the action and execute it
-# if the current time = read_config_transaction_time();
-# Roll (check if there are more than 2 trunks there)
-# write in a file that the last action was made on date/time
-# set the sleep to 30 minutes?
+while True:
+    while True:
+        try:
+            u.log('Current rewards: ' + str(business.get_user_rewards()) + ' TRUNKs')
+            business.execute_action_configurated()
+            time.sleep(interval-295)
+        except Exception as e:
+            pass
+            print("ERROR")
+            print(e)
+            print("Probably an error ocurred. Check your internet connection. Pausing the process for 15 seconds.")
+            time.sleep(15)
+        else:
+            break
 
 
 

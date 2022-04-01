@@ -3,7 +3,7 @@ from web3 import Web3
 from cryptography.fernet import Fernet
 from dotenv import load_dotenv
 
-# load environment variables
+# Load environment variables (.env file)
 load_dotenv()
 
 rpc_url = "https://bsc-dataseed.binance.org:443"
@@ -12,7 +12,6 @@ web3 = Web3(Web3.HTTPProvider(rpc_url))
 def connect_to_contract(contract_addr, contract_abi):
     contract = web3.eth.contract(address=contract_addr, abi=contract_abi)
     return contract
-
 
 def send_txn(txn, private_key_encrypt):
     # get key from environment variable
@@ -26,13 +25,13 @@ def send_txn(txn, private_key_encrypt):
     tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
     return tx_receipt
 
-def dev():
-    return "0x98C4Ac9C24C2971e5e2C085cA424a061D0A9020D"
+# def dev():
+#     return "0x98C4Ac9C24C2971e5e2C085cA424a061D0A9020D"
 
 def get_tx_options(public_address, gas=500000):
     return {
         "nonce": web3.eth.getTransactionCount(public_address),
         "from": public_address,
         "gas": gas,
-        "gasPrice": web3.toWei(5, "gwei")
+        "gasPrice": web3.toWei(int(os.environ['GAS_FEE']), "gwei")
     }

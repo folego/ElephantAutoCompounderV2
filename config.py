@@ -1,14 +1,14 @@
 import os
 
-# error and format handling
+# TO DO: error and format handling
 
 def read_config_strategy():
     strategy = os.environ['STRATEGY']
     return int(strategy)
 
 def read_config_transaction_time():
-    time = os.environ['DAILY_TIME_TO_TRANSACTION']
-    return int(time) # convert to 12 AM/PM
+    time = os.environ['DAILY_TIME_TO_EXECUTE_TRANSACTION']
+    return int(time)
 
 def read_config_interval_info():
     interval = os.environ['INTERVAL_INFO']
