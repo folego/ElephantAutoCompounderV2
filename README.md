@@ -7,7 +7,7 @@ Check the 2 variable in the stampede.py file called minimum_to_roll and time_bet
 Minimun to roll [minimum_to_roll] variable represents the minimum amount to have before roll your rewards.
 Time between checks [time_between_check] variable represents the time the process is paused between each reward TRUNK check.
 
-## Setup Roller
+## Setup Roller (Autocompounder)
 You NEED TO use the encryption outlined in the code to best protect yourself in the event your computer is ever compomised. 
 
 1. Download [Python](https://www.python.org/downloads/) if you do not already have it. There are a number of resources that will walk 
@@ -45,20 +45,22 @@ phrase and import your wallet into MetaMask. Then you can export the private key
 
 6. Take the value in `encMessage.decode()`, create (or update) a file called `key.txt` and save the text in the file. This file SHOULD NOT contain quotes. 
 
-7. Open the `stampede.py` file and replace the string stored in `wallet_public_addr` with your own public wallet.
+7. Open the `service.py` file and replace the string stored in `wallet_public_addr` with your own public wallet.
 
-8. Change the `minimum_to_roll` value to the minimum number of TRUNKS you want to compound after reaching
+8. Change the `.env` file, looking the STRATEGY parameter and update strategy number that you want to use (check this [Excel](https://docs.google.com/spreadsheets/d/1f-z7ISxKwffoNm8FEZBen1Xz8kzqlAdi4npkfVv8NU4/edit?usp=sharing) file as a reference.
+
+9. BONUS (Optional): You can change the `strategyconfig.py` to customize your own strategy.
 
 ## Using the Roller
 
-In a terminal window, navigate to the location where you saved all the files. Run `python stampede.py` file.
+In a terminal window, navigate to the location where you saved all the files. Run `python autocompounder.py` file.
 
 ```bash
-$ python stampede.py
+$ python autocompounder.py
 ```
 
 This terminal window will always need to remain open for the autoplanter to function. If the terminal window closes, just execute
-`stampede.py` again.
+`autocompounder.py` again.
 
 If this autoplanter helps you, consider supporting me by sending me an airdrop. 
 

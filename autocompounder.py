@@ -62,7 +62,7 @@ while True:
             # print('Current rewards: ' + str(business.get_user_rewards()) + ' TRUNKs', end='\r')
             u.log('Current rewards: ' + str(business.get_user_rewards()) + ' TRUNKs                                               ')
             business.execute_action_configurated()
-            time.sleep(interval-295)
+            time.sleep(interval)
         except Exception as e:
             pass
             print("ERROR")

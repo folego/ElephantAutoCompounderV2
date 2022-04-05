@@ -15,10 +15,10 @@ def execute_action_configurated():
                 #print("check_for_low_rewards", check_for_low_rewards())
                 if (u.get_current_day() % 2) == 0: #even
                     service.roll()
-                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_rewards()), False)
+                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 else:
                     service.withdraw()
-                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_rewards()), False)
+                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
         if cfg.read_config_strategy() == 2:
             if not check_for_low_rewards():
@@ -26,10 +26,10 @@ def execute_action_configurated():
                 strategyAction = strategy.strategy2[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
-                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_rewards()), False)
+                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 if strategyAction == "W":
                     service.withdraw()
-                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_rewards()), False)
+                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
         if cfg.read_config_strategy() == 5:
             print("Not implemented yet")
@@ -41,10 +41,10 @@ def execute_action_configurated():
                 strategyAction = strategy.strategy7[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
-                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_rewards()), False)
+                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 if strategyAction == "W":
                     service.withdraw()
-                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_rewards()), False)
+                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
         if cfg.read_config_strategy() == 8:
             if not check_for_low_rewards():
@@ -52,10 +52,10 @@ def execute_action_configurated():
                 strategyAction = strategy.strategy8[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
-                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_rewards()), False)
+                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 if strategyAction == "W":
                     service.withdraw()
-                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_rewards()), False)
+                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
 
 def update_action_performed():
@@ -92,7 +92,7 @@ def check_action_already_performed_today():
             return False
         # print(f'Current hour is equal or bigger than configurated')
     else:
-        print('Current hour is lower than configurated')
+        # print('Current hour is lower than configurated')
         return True
 
 def check_for_low_rewards():
