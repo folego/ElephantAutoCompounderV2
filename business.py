@@ -1,5 +1,6 @@
 import math
 import datetime
+import time
 import config as cfg
 import util as u
 import service
@@ -15,9 +16,11 @@ def execute_action_configurated():
                 #print("check_for_low_rewards", check_for_low_rewards())
                 if (u.get_current_day() % 2) == 0: #even
                     service.roll()
+                    time.sleep(10)
                     u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 else:
                     service.withdraw()
+                    time.sleep(10)
                     u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
         if cfg.read_config_strategy() == 2:
@@ -26,9 +29,11 @@ def execute_action_configurated():
                 strategyAction = strategy.strategy2[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
+                    time.sleep(10)
                     u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 if strategyAction == "W":
                     service.withdraw()
+                    time.sleep(10)
                     u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
         if cfg.read_config_strategy() == 5:
@@ -41,9 +46,11 @@ def execute_action_configurated():
                 strategyAction = strategy.strategy7[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
+                    time.sleep(10)
                     u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 if strategyAction == "W":
                     service.withdraw()
+                    time.sleep(10)
                     u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
         if cfg.read_config_strategy() == 8:
@@ -52,9 +59,11 @@ def execute_action_configurated():
                 strategyAction = strategy.strategy8[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
+                    time.sleep(10)
                     u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 if strategyAction == "W":
                     service.withdraw()
+                    time.sleep(10)
                     u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
 
