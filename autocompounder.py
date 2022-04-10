@@ -59,70 +59,15 @@ u.log('Total deposits: ' + str(business.get_user_deposits()) + ' TRUNKs', False)
 while True:
     while True:
         try:
-            # print('Current rewards: ' + str(business.get_user_rewards()) + ' TRUNKs', end='\r')
             u.log('Current rewards: ' + str(business.get_user_rewards()) + ' TRUNKs                                               ')
             business.execute_action_configurated()
             time.sleep(interval)
         except Exception as e:
             pass
-            print("ERROR")
+            print("")
+            print("!!! ERROR EXECUTING AN CONTRACT INTERACTION !!!")
+            print("An error ocurred. Please review the message below. Retrying in 60 seconds.")
             print(e)
-            print("Probably an error ocurred. Check your internet connection. Pausing the process for 15 seconds.")
-            time.sleep(15)
+            time.sleep(60)
         else:
             break
-
-
-
-# V1
-# General options
-# minimum_to_roll = 2e18 # delete, not relevant anymore
-# time_between_check = 60 # read from config file
-# last_reward = 0 # delete, not relevant anymore
-# actual_reward = 0 # delete, not relevant anymore
-
-# while True:
-#     while True:
-#         try:
-#             # print(f'Checking actual rewards')
-#             actual_rewards = math.floor(get_user_rewards(wallet_public_addr))
-
-#             # Calculating next roll
-#             if last_reward == 0:
-#                 last_reward = actual_rewards
-#             else: 
-#                 actual_reward = actual_rewards
-
-#             if last_reward > 0 and actual_reward > 0:
-#                 speed = actual_reward - last_reward
-#                 # Calculate the current speed (rewards / sec)
-#                 speed = speed / time_between_check
-#                 remaining = minimum_to_roll - actual_rewards
-#                 next_roll = remaining / speed
-#                 print(f'Current rewards speed is: {round(speed/1e18*60*60,4)} (TRUNK/hour). Next roll will be available in {display_time(next_roll)}')
-#                 last_reward = actual_reward
-            
-#             # TO DO: Calculate Trunk/month, Trunk/week, Trunk/day, trunk/hour
-#             # TO DO: Improve the estimation using average data
-
-#             print(f'Actual rewards: {round(actual_rewards/1e18,4)} TRUNK(s)')
-#             if actual_rewards >= math.floor(minimum_to_roll):
-#                 print(f'Rolling...')
-#                 roll()
-#                 print(f'Rolled! Waiting 60 seconds to start a new cycle')
-#                 time.sleep(60) # Interval to check a new roll
-#             else:
-#                 print(f'Min rewards not achieved yet, trying again in {time_between_check} seconds')
-#                 time.sleep(time_between_check) # Interval of each check
-
-#         except Exception as e:
-#             pass
-#             print("ERROR")
-#             print(e)
-#             print("Entered in the except of the main loop. Probably an error ocurred. Pausing the process for 15 seconds.")
-#             time.sleep(15)
-#         else:
-#             break
-
-
-

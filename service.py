@@ -29,6 +29,14 @@ def roll():
     return contract.send_txn(txn, wallet_private_key)
 
 def withdraw():
-    txn = elephant_contract.functions.claim().buildTransaction(contract.get_tx_options(wallet_public_addr))
-    return contract.send_txn(txn, wallet_private_key)
+    # try:
+        txn = elephant_contract.functions.claim().buildTransaction(contract.get_tx_options(wallet_public_addr))
+        return contract.send_txn(txn, wallet_private_key)
+    # except Exception as e:
+    #     pass
+    #     print("")
+    #     print("ERROR")
+    #     print(e)
+    #     print("An error ocurred. Can be an issues with our internet conection or an internal error. Pausing the process for 15 seconds.")
+    
 

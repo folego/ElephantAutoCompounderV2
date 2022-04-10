@@ -11,9 +11,6 @@ def execute_action_configurated():
         #print("check_action_already_performed_today", check_action_already_performed_today())
         rewards = get_user_rewards()
         currentStrategy = cfg.read_config_strategy()
-        print("currentStrategy", currentStrategy)
-        print("currentStrategy", currentStrategy)
-        print("currentStrategy", currentStrategy)
         if currentStrategy == 1: #strategy = 1 - TO DO: IMPROVE, for now considering days even and odds
             # print("strategy = 1")
             if not check_for_low_rewards():
@@ -51,7 +48,7 @@ def execute_action_configurated():
                 if strategyAction == "W":
                     service.withdraw()
                     time.sleep(10)
-                    u.log("A transfer of " + str(rewards) + " TRUNKs was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
+                    u.log("A transfer of " + str(rewards) + " TRUNKs was likely made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()) + ". If is not, be sure about the BNB balance in your account required to claim. (You can simulate using your Metamask)", False)
                 update_action_performed()
         if currentStrategy == 6:
             if not check_for_low_rewards():

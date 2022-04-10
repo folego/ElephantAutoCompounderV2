@@ -1,5 +1,6 @@
 import os
 from web3 import Web3
+# from web3 import exceptions
 from cryptography.fernet import Fernet
 from dotenv import load_dotenv
 
@@ -14,19 +15,19 @@ def connect_to_contract(contract_addr, contract_abi):
     return contract
 
 def send_txn(txn, private_key_encrypt):
-    # get key from environment variable
-    fernet_key = os.environ['FERNET_KEY']
-    
-    # decode encrypted key
-    private_key = Fernet(fernet_key.encode()).decrypt(private_key_encrypt.encode()).decode()
-    
-    txn_signed = web3.eth.account.signTransaction(txn, private_key)
-    tx_hash = web3.eth.sendRawTransaction(txn_signed.rawTransaction)
-    tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
-    return tx_receipt
-
-# def dev():
-#     return "0x98C4Ac9C24C2971e5e2C085cA424a061D0A9020D"
+    # try:
+        # get key from environment variable
+        fernet_key = os.environ['FERNET_KEY']
+        
+        # decode encrypted key
+        private_key = Fernet(fernet_key.encode()).decrypt(private_key_encrypt.encode()).decode()
+        
+        txn_signed = web3.eth.account.signTransaction(txn, private_key)
+        tx_hash = web3.eth.sendRawTransaction(txn_signed.rawTransaction)
+        tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
+        return tx_receipt
+    # except exceptions.SolidityError as error:
+    #     print(error)
 
 def get_tx_options(public_address, gas=500000):
     return {
