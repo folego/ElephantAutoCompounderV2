@@ -25,8 +25,15 @@ def get_user_deposits():
     return elephant_contract.functions.userInfo(wallet_public_addr).call()
 
 def roll():
-    txn = elephant_contract.functions.roll().buildTransaction(contract.get_tx_options(wallet_public_addr))
-    return contract.send_txn(txn, wallet_private_key)
+    # try:
+        txn = elephant_contract.functions.roll().buildTransaction(contract.get_tx_options(wallet_public_addr))
+        return contract.send_txn(txn, wallet_private_key)
+    # except Exception as e:
+    #     pass
+    #     print("")
+    #     print("ERROR")
+    #     print(e)
+    #     print("An error ocurred during ROLL. Can be an issues with our internet conection or an internal error. Pausing the process for 15 seconds.")
 
 def withdraw():
     # try:
@@ -37,6 +44,6 @@ def withdraw():
     #     print("")
     #     print("ERROR")
     #     print(e)
-    #     print("An error ocurred. Can be an issues with our internet conection or an internal error. Pausing the process for 15 seconds.")
+    #     print("An error ocurred WITHDRAW. Can be an issues with our internet conection or an internal error. Pausing the process for 15 seconds.")
     
 
