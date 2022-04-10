@@ -10,61 +10,93 @@ def execute_action_configurated():
     if not check_action_already_performed_today():
         #print("check_action_already_performed_today", check_action_already_performed_today())
         rewards = get_user_rewards()
-        if cfg.read_config_strategy() == 1: #strategy = 1 - TO DO: IMPROVE, for now considering days even and odds
+        currentStrategy = cfg.read_config_strategy()
+        print("currentStrategy", currentStrategy)
+        print("currentStrategy", currentStrategy)
+        print("currentStrategy", currentStrategy)
+        if currentStrategy == 1: #strategy = 1 - TO DO: IMPROVE, for now considering days even and odds
             # print("strategy = 1")
             if not check_for_low_rewards():
                 #print("check_for_low_rewards", check_for_low_rewards())
                 if (u.get_current_day() % 2) == 0: #even
                     service.roll()
                     time.sleep(10)
-                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
+                    u.log("Your TRUNK balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 else:
                     service.withdraw()
                     time.sleep(10)
-                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
+                    u.log("A transfer of " + str(rewards) + " TRUNKs was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
-        if cfg.read_config_strategy() == 2:
+        if currentStrategy == 2:
             if not check_for_low_rewards():
                 currentDay = u.get_current_day()
                 strategyAction = strategy.strategy2[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
                     time.sleep(10)
-                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
+                    u.log("Your TRUNK balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 if strategyAction == "W":
                     service.withdraw()
                     time.sleep(10)
-                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
+                    u.log("A transfer of " + str(rewards) + " TRUNKs was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
-        if cfg.read_config_strategy() == 5:
-            print("Not implemented yet")
-        if cfg.read_config_strategy() == 6:
-            print("Not implemented yet")
-        if cfg.read_config_strategy() == 7:
+        if currentStrategy == 5:
+            if not check_for_low_rewards():
+                currentWeekDay = u.get_current_week_day()
+                strategyAction = strategy.strategy5[str(currentWeekDay)]
+                if strategyAction == "R":
+                    service.roll()
+                    time.sleep(10)
+                    u.log("Your TRUNK balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
+                if strategyAction == "W":
+                    service.withdraw()
+                    time.sleep(10)
+                    u.log("A transfer of " + str(rewards) + " TRUNKs was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
+                update_action_performed()
+        if currentStrategy == 6:
+            if not check_for_low_rewards():
+                currentWeekDay = u.get_current_week_day()
+                strategyAction = strategy.strategy6[str(currentWeekDay)]
+                if strategyAction == "R":
+                    service.roll()
+                    time.sleep(10)
+                    u.log("Your TRUNK balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
+                if strategyAction == "W":
+                    service.withdraw()
+                    time.sleep(10)
+                    u.log("A transfer of " + str(rewards) + " TRUNKs was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
+                update_action_performed()
+        if currentStrategy == 7:
             if not check_for_low_rewards():
                 currentDay = u.get_current_day()
                 strategyAction = strategy.strategy7[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
                     time.sleep(10)
-                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
+                    u.log("Your TRUNK balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 if strategyAction == "W":
                     service.withdraw()
                     time.sleep(10)
-                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
+                    u.log("A transfer of " + str(rewards) + " TRUNKs was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
-        if cfg.read_config_strategy() == 8:
+        if currentStrategy == 8:
             if not check_for_low_rewards():
                 currentDay = u.get_current_day()
                 strategyAction = strategy.strategy8[str(currentDay)]
                 if strategyAction == "R":
                     service.roll()
                     time.sleep(10)
-                    u.log("Your balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
+                    u.log("Your TRUNK balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 if strategyAction == "W":
                     service.withdraw()
                     time.sleep(10)
-                    u.log("A transfer of " + str(rewards) + " was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
+                    u.log("A transfer of " + str(rewards) + " TRUNKs was made to your wallet " + service.wallet_public_addr + ". Your total balance is now " + str(get_user_deposits()), False)
+                update_action_performed()
+        if currentStrategy == 9:
+            if not check_for_low_rewards():
+                service.roll()
+                time.sleep(10)
+                u.log("Your TRUNK balance of " + str(rewards) + " was rolled. Total balance is now " + str(get_user_deposits()), False)
                 update_action_performed()
 
 def update_action_performed():

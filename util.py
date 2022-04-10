@@ -33,3 +33,6 @@ def get_current_time_of_the_day():
 
 def get_current_day():
     return int(datetime.datetime.now().strftime("%d"))
+
+def get_current_week_day():
+    return datetime.datetime.now().weekday()

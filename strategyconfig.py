@@ -36,26 +36,27 @@ strategy2 = {
     "31": "R",
 }
 
+# Weekdays: Monday is 0 and Sunday is 6
 strategy5 = {
     "type": "weekdays",
-    "m": "R",
-    "t": "R",
-    "w": "R",
-    "t": "R",
-    "f": "R",
-    "s": "N",
-    "S": "W",
+    "0": "R",
+    "1": "R",
+    "2": "R",
+    "3": "R",
+    "4": "R",
+    "5": "N",
+    "6": "W",
 }
 
 strategy6 = {
     "type": "weekdays",
-    "m": "W",
-    "t": "R",
-    "w": "W",
-    "t": "R",
-    "f": "W",
-    "s": "R",
-    "S": "R",
+    "0": "W",
+    "1": "R",
+    "2": "W",
+    "3": "R",
+    "4": "W",
+    "5": "R",
+    "6": "R",
 }
 
 strategy7 = {
@@ -126,4 +127,8 @@ strategy8 = {
     "29": "R",
     "30": "R",
     "31": "R",
+}
+
+strategy9 = {
+    "type": "roll"
 }
