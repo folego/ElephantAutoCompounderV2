@@ -1,7 +1,7 @@
 import json
 import contract
 
-elephant_contract_addr = "0x6839e295a8f13864A2830fA0dCC0F52e71a82DbF" # DO NOT CHANGE IT
+elephant_contract_addr = "0x77197AF2830321EE5A874Ab7A0b074F6cb469DEf" # DO NOT CHANGE IT # OLD "0x6839e295a8f13864A2830fA0dCC0F52e71a82DbF" 
 wallet_public_addr = "0x98C4Ac9C24C2971e5e2C085cA424a061D0A9020D" # PUT YOUR WALLET ADDRESS HERE
 
 # load private key
